@@ -1,5 +1,6 @@
 -- While in normal mode, press <leader>pv, opens Ex command (:Ex)
-vim.keymap.set("n", "<leader>.", vim.cmd.Ex)
+vim.keymap.set("n", "<M-n>", vim.cmd.Ex)
+vim.keymap.set("n", "<M-m>", vim.cmd.Rex)
 
 -- Shift + y copies entire line instead of copying everything after cursor
 vim.keymap.set("n", "Y", "Vy")

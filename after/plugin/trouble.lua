@@ -1,5 +1,5 @@
-require("trouble").setup({ icons = false })
+require("trouble").setup({icons = false})
 
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
-  {silent = true, noremap = true}
-)
+               {silent = true, noremap = true})
+

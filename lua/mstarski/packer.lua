@@ -1,5 +1,4 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -9,14 +8,15 @@ return require('packer').startup(function(use)
 
     use {
         -- also requires ripgrep for grep command to work
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.1',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = {{'nvim-lua/plenary.nvim'}}
     }
 
     use("smartpde/telescope-recent-files")
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+    use({'rose-pine/neovim', as = 'rose-pine'})
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
@@ -26,26 +26,15 @@ return require('packer').startup(function(use)
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {                                      -- Optional
-            'williamboman/mason.nvim',
-            run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
-        },
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
+            {'neovim/nvim-lspconfig'}, -- Required
+            { -- Optional
+                'williamboman/mason.nvim',
+                run = function() pcall(vim.cmd, 'MasonUpdate') end
+            }, {'williamboman/mason-lspconfig.nvim'}, -- Optional
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/nvim-cmp'}, -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-        }
-    }
-
-    use {
-        'ggandor/lightspeed.nvim',
-        requires = {
-            { 'tpope/vim-repeat' },
+            {'L3MON4D3/LuaSnip'} -- Required
         }
     }
 
@@ -56,21 +45,17 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+        requires = {'nvim-tree/nvim-web-devicons', opt = true}
     }
 
     use("windwp/nvim-autopairs")
     use("ellisonleao/glow.nvim")
 
+    use {"folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons"}
 
-    use {
-        "folke/trouble.nvim",
-        requires = "nvim-tree/nvim-web-devicons",
-    }
-
-    use("justinmk/vim-sneak")
-    use("ja-ford/delaytrain.nvim")
+    use("phaazon/hop.nvim")
     use('nvim-tree/nvim-web-devicons')
     use('preservim/nerdcommenter')
+    use('christoomey/vim-tmux-navigator')
 end)
 
