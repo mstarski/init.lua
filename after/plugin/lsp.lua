@@ -9,8 +9,11 @@ lsp.ensure_installed({
 	'lua_ls'
 })
 
-lsp.set_preferences({
-	sign_icons = { }
+lsp.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
 })
 
 lsp.setup({
@@ -39,4 +42,8 @@ cmp.setup({
   }
 })
 
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
+vim.keymap.set('n', '<leader>0', vim.diagnostic.open_float)

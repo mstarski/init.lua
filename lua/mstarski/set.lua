@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.opt.guicursor = "" -- fat cursor
+vim.opt.mouse = "" -- disable mouse
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -33,3 +33,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.g.nottimeout = true
+vim.opt.ttimeoutlen = 5
