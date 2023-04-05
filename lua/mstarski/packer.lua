@@ -34,7 +34,8 @@ return require('packer').startup(function(use)
             -- Autocompletion
             {'hrsh7th/nvim-cmp'}, -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'} -- Required
+            {'L3MON4D3/LuaSnip'}, -- Required
+            { 'jose-elias-alvarez/typescript.nvim' }
         }
     }
 
@@ -57,5 +58,6 @@ return require('packer').startup(function(use)
     use('nvim-tree/nvim-web-devicons')
     use('preservim/nerdcommenter')
     use('christoomey/vim-tmux-navigator')
+    use('mhinz/vim-startify')
 end)
 

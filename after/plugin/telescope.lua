@@ -1,20 +1,38 @@
 local builtin = require('telescope.builtin')
 local telescope = require('telescope');
 
-telescope.setup{
+telescope.setup ({
     defaults = {
+        layout_strategy = "vertical",
         file_ignore_patterns = {
             'git',
             'node_modules',
             'dist'
-        }
+        },
+        prompt_prefix="🔍",
     },
     pickers = {
         find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
             theme = "dropdown",
-        }
+        },
+
+        live_grep = {
+            theme = "dropdown",
+            prompt_prefix="🔍"
+        },
+
+        treesitter = {
+            theme = "dropdown",
+            prompt_prefix="🔍"
+        },
+
+        recent_files = {
+            theme = "dropdown",
+            prompt_prefix="🔍"
+        },
     },
-}
+})
 
 telescope.load_extension("recent_files")
 
@@ -33,6 +51,11 @@ end)
 
 vim.keymap.set('n', '<M-b>', function()
     builtin.git_branches()
+end)
+
+
+vim.keymap.set('n', '<leader>gr', function()
+    builtin.lsp_references()
 end)
 
 -- Recent files window
