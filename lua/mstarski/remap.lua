@@ -30,3 +30,7 @@ vim.keymap.set("n", "<RIGHT>", "<nop>")
 -- Go to prev/next file with TAB/S-Tab
 vim.keymap.set("n", "<Tab>", "<C-i>")
 vim.keymap.set("n", "<S-Tab>", "<C-o>")
+
+-- Splits
+vim.keymap.set("", "<leader>\\", ":vs<CR> :wincmd l<CR>")
+vim.keymap.set("", "<leader>'", ":sv<CR> :wincmd j<CR>")

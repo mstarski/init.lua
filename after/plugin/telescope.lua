@@ -14,21 +14,21 @@ telescope.setup ({
     pickers = {
         find_files = {
             find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-            theme = "dropdown",
+            -- theme = "dropdown",
         },
 
         live_grep = {
-            theme = "dropdown",
+            -- theme = "dropdown",
             prompt_prefix="🔍"
         },
 
         treesitter = {
-            theme = "dropdown",
+            -- theme = "dropdown",
             prompt_prefix="🔍"
         },
 
         recent_files = {
-            theme = "dropdown",
+            -- theme = "dropdown",
             prompt_prefix="🔍"
         },
     },
