@@ -7,7 +7,7 @@ lsp.ensure_installed({'tsserver', 'lua_ls'})
 
 lsp.set_sign_icons({error = '✘', warn = '▲', hint = '⚑', info = '»'})
 
-lsp.skip_server_setup({ 'tsserver' })
+lsp.skip_server_setup({'tsserver'})
 lsp.setup({sources = {{name = 'nvim_lsp'}, {name = 'nvim_lua'}}})
 
 lsp.on_attach(function(_, bufnr) lsp.default_keymaps({buffer = bufnr}) end)
@@ -19,15 +19,19 @@ lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 require("typescript").setup({
     settings = {
-    -- Your tsserver settings here
-  }
+        -- Your tsserver settings here
+    }
 })
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
-    sources = {{name = 'nvim_lsp'}, {name = 'nvim_lua'}},
+    sources = {
+        {name = 'nvim_lsp'}, {name = 'nvim_lua'}, {name = 'path'},
+        {name = 'nvim_lsp'}, {name = 'buffer', keyword_length = 3},
+        {name = 'luasnip', keyword_length = 2}
+    },
     mapping = {
         ['<Down>'] = cmp_action.tab_complete(),
         ['<Up>'] = cmp_action.select_prev_or_fallback(),
