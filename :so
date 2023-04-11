@@ -15,20 +15,14 @@ end)
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 lspconfig.omnisharp.setup({
-	cmd = { "omnisharp", "-lsp" },
-	root_dir = lspconfig.util.root_pattern(".git", "obj"),
-	filetypes = { "cs" },
 	settings = {
-		Zero = {
-			diagnosticFilter = {
-				exclude = { "**/obj/**", "**/bin/**" },
-			},
-		},
-		RoslynExtensionsOptions = {
-			enableAnalyzersSupport = true,
-			enableCodeFixesSupport = true,
-			enableRefactoringsSupport = true,
-		},
+		projectFilesExcludePattern = "**/node_modules/**,**/.git/**,**/bower_components/**,**/obj/**,**/Migrations/**",
+	},
+	enable_editorconfig_support = true,
+	organize_imports_on_format = true,
+	enable_import_completion = true,
+	init_options = {
+		projectFilesExcludePattern = "hiho",
 	},
 })
 

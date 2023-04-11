@@ -36,4 +36,3 @@ vim.opt.colorcolumn = "80"
 
 vim.g.nottimeout = true
 vim.opt.ttimeoutlen = 5
-
