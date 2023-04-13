@@ -58,10 +58,6 @@ vim.keymap.set("n", "<M-s>", function()
 	builtin.lsp_dynamic_workspace_symbols()
 end)
 
-vim.keymap.set("n", "<M-b>", function()
-	builtin.git_branches()
-end)
-
 vim.keymap.set("n", "<leader>gr", function()
 	builtin.lsp_references()
 end)

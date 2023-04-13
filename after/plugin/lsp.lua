@@ -7,12 +7,29 @@ lsp.ensure_installed({ "tsserver", "lua_ls" })
 lsp.set_sign_icons({ error = "✘", warn = "▲", hint = "⚑", info = "»" })
 lsp.setup({ sources = { { name = "nvim_lsp" }, { name = "nvim_lua" } } })
 
+lsp.skip_server_setup({ "tsserver" })
+
 lsp.on_attach(function(_, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
 end)
 
 -- (Optional) Configure lua language server for neovim
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+lspconfig.yamlls.setup({
+	settings = {
+		yaml = {
+			keyOrdering = false,
+			schemaStore = true,
+			completion = true,
+			validate = true,
+			schemas = {
+				["https://json.schemastore.org/github-workflow.json"] = "/**/.github/**/workflows/**",
+				["https://json.schemastore.org/github-action.json"] = "/**/.github/**/actions/**",
+			},
+		},
+	},
+})
 
 lspconfig.omnisharp.setup({
 	cmd = { "omnisharp", "-lsp" },
@@ -29,6 +46,18 @@ lspconfig.omnisharp.setup({
 			enableCodeFixesSupport = true,
 			enableRefactoringsSupport = true,
 		},
+	},
+})
+
+require("typescript").setup({
+	server = {
+		on_attach = function(client, bufnr)
+			-- You can find more commands in the documentation:
+			-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+			if client.name == "tsserver" then
+				client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+			end
+		end,
 	},
 })
 
