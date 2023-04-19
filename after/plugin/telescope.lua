@@ -14,21 +14,29 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-			-- theme = "dropdown",
+			theme = "ivy",
+		},
+
+		git_files = {
+			theme = "ivy",
+		},
+
+		oldfiles = {
+			theme = "ivy",
 		},
 
 		live_grep = {
-			-- theme = "dropdown",
+			theme = "ivy",
 			prompt_prefix = "🔍",
 		},
 
 		treesitter = {
-			-- theme = "dropdown",
+			theme = "ivy",
 			prompt_prefix = "🔍",
 		},
 
 		recent_files = {
-			-- theme = "dropdown",
+			theme = "ivy",
 			prompt_prefix = "🔍",
 		},
 	},
@@ -65,9 +73,4 @@ end)
 vim.keymap.set("", "<BS>", ":Telescope resume<CR>")
 
 -- Recent files window
-vim.keymap.set(
-	"n",
-	"<C-e>",
-	[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
-	{ noremap = true, silent = true }
-)
+vim.keymap.set("n", "<C-e>", builtin.oldfiles, { noremap = true, silent = true })
