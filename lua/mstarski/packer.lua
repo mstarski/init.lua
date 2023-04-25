@@ -15,7 +15,11 @@ return require("packer").startup(function(use)
 	})
 
 	use("smartpde/telescope-recent-files")
+
 	use({ "rose-pine/neovim", as = "rose-pine" })
+	use({ "tomasiser/vim-code-dark" })
+	use({ "AstroNvim/astrotheme" })
+
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("theprimeagen/harpoon")
 	use("mbbill/undotree")

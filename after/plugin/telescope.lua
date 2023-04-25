@@ -2,13 +2,25 @@ local builtin = require("telescope.builtin")
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 
+local prompt = " 🔍 "
+
 telescope.setup({
 	defaults = {
 		layout_strategy = "vertical",
 		file_ignore_patterns = { "git", "node_modules", "dist" },
-		prompt_prefix = "🔍",
+		prompt_prefix = prompt,
+
+		-- :h telescope.defaults.path_display
+		path_display = { "truncate" },
 
 		mappings = { i = { ["<esc>"] = actions.close } },
+	},
+
+	extensions = {
+		recent_files = {
+			only_cwd = true,
+			theme = "ivy",
+		},
 	},
 
 	pickers = {
@@ -27,17 +39,19 @@ telescope.setup({
 
 		live_grep = {
 			theme = "ivy",
-			prompt_prefix = "🔍",
+			literal = true,
 		},
 
 		treesitter = {
 			theme = "ivy",
-			prompt_prefix = "🔍",
 		},
 
 		recent_files = {
 			theme = "ivy",
-			prompt_prefix = "🔍",
+		},
+
+		lsp_references = {
+			path_display = { "tail" },
 		},
 	},
 })
@@ -72,5 +86,12 @@ end)
 
 vim.keymap.set("", "<BS>", ":Telescope resume<CR>")
 
+vim.keymap.set("n", "<leader>gl", builtin.git_commits)
+
 -- Recent files window
-vim.keymap.set("n", "<C-e>", builtin.oldfiles, { noremap = true, silent = true })
+vim.keymap.set(
+	"n",
+	"<C-e>",
+	[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+	{ noremap = true, silent = true }
+)

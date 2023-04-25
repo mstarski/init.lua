@@ -16,6 +16,20 @@ end)
 -- (Optional) Configure lua language server for neovim
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
+-- TYPESCRIPT
+require("typescript").setup({
+	server = {
+		on_attach = function(client, bufnr)
+			-- You can find more commands in the documentation:
+			-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+			if client.name == "tsserver" then
+				client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+			end
+		end,
+	},
+})
+
+-- YAML
 lspconfig.yamlls.setup({
 	settings = {
 		yaml = {
@@ -31,6 +45,7 @@ lspconfig.yamlls.setup({
 	},
 })
 
+-- .NET
 lspconfig.omnisharp.setup({
 	cmd = { "omnisharp", "-lsp" },
 	root_dir = lspconfig.util.root_pattern(".git", "obj"),
@@ -46,41 +61,6 @@ lspconfig.omnisharp.setup({
 			enableCodeFixesSupport = true,
 			enableRefactoringsSupport = true,
 		},
-	},
-})
-
-require("typescript").setup({
-	server = {
-		on_attach = function(client, bufnr)
-			-- You can find more commands in the documentation:
-			-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
-			if client.name == "tsserver" then
-				client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-			end
-		end,
-	},
-})
-
-local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
-
-cmp.setup({
-	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
-		{ name = "nvim_lsp" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 2 },
-	},
-	mapping = {
-		["<Down>"] = cmp_action.tab_complete(),
-		["<Up>"] = cmp_action.select_prev_or_fallback(),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
 	},
 })
 
