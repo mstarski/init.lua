@@ -77,6 +77,7 @@ return require("packer").startup(function(use)
 	})
 
 	use("junegunn/limelight.vim")
-	use("idanarye/vim-merginal")
+	-- use("idanarye/vim-merginal")
 	use("Yggdroot/indentLine")
+	use("b0o/schemastore.nvim")
 end)

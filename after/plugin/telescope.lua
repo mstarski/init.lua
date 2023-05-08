@@ -86,8 +86,6 @@ end)
 
 vim.keymap.set("", "<BS>", ":Telescope resume<CR>")
 
-vim.keymap.set("n", "<leader>gl", builtin.git_commits)
-
 -- Recent files window
 vim.keymap.set(
 	"n",

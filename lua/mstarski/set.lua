@@ -36,3 +36,7 @@ vim.opt.colorcolumn = "80"
 
 vim.g.nottimeout = true
 vim.opt.ttimeoutlen = 5
+
+vim.opt.cmdheight = 1
+
+vim.g.indentLine_fileTypeExclude = { "json" }

@@ -8,6 +8,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
-	command = "silent! undojoin | Neoformat",
+	command = "silent! undojoin | silent! Neoformat",
 	group = fmtGroup,
 })

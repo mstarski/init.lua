@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 local lsp = require("lsp-zero").preset({
 	manage_nvim_cmp = { set_sources = "recommended" },
 })
+local schemastore = require("schemastore")
 
 lsp.ensure_installed({ "tsserver", "lua_ls" })
 lsp.set_sign_icons({ error = "✘", warn = "▲", hint = "⚑", info = "»" })
@@ -29,6 +30,16 @@ require("typescript").setup({
 	},
 })
 
+-- JSON
+lspconfig.jsonls.setup({
+	settings = {
+		json = {
+			schemas = schemastore.json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
 -- YAML
 lspconfig.yamlls.setup({
 	settings = {
@@ -37,10 +48,7 @@ lspconfig.yamlls.setup({
 			schemaStore = true,
 			completion = true,
 			validate = true,
-			schemas = {
-				["https://json.schemastore.org/github-workflow.json"] = "/**/.github/**/workflows/**",
-				["https://json.schemastore.org/github-action.json"] = "/**/.github/**/actions/**",
-			},
+			schemas = schemastore.yaml.schemas(),
 		},
 	},
 })
