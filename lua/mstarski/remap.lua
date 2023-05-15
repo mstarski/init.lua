@@ -1,7 +1,3 @@
--- While in normal mode, press <leader>pv, opens Ex command (:Ex)
-vim.keymap.set("n", "<M-n>", vim.cmd.Ex)
-vim.keymap.set("n", "<M-m>", vim.cmd.Rex)
-
 -- Shift + y copies entire line instead of copying everything after cursor
 vim.keymap.set("n", "Y", "Vy")
 
@@ -27,10 +23,20 @@ vim.keymap.set("n", "<DOWN>", "<nop>")
 vim.keymap.set("n", "<LEFT>", "<nop>")
 vim.keymap.set("n", "<RIGHT>", "<nop>")
 
--- Go to prev/next file with TAB/S-Tab
-vim.keymap.set("n", "<Tab>", "<C-i>")
-vim.keymap.set("n", "<S-Tab>", "<C-o>")
+-- Go to prev/next buffer with TAB/S-Tab
+vim.keymap.set("n", "<Tab>", ":bnext<CR>")
+vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
 
 -- Splits
 vim.keymap.set("", "<leader>\\", ":vs<CR> :wincmd l<CR>")
 vim.keymap.set("", "<leader>'", ":sv<CR> :wincmd j<CR>")
+
+-- Close buffers
+vim.keymap.set("n", "<M-q>", ":Bwipeout<CR>")
+
+-- Resizing windows
+vim.keymap.set("n", "+", ":vertical res +5<CR>")
+vim.keymap.set("n", "=", ":vertical res -5<CR>")
+
+vim.keymap.set("n", '"', ":res +5<CR>")
+vim.keymap.set("n", "'", ":res -5<CR>")

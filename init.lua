@@ -1,1 +1,1 @@
-require("mstarski");
+require("mstarski")

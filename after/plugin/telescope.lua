@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>ps", function()
 	builtin.live_grep()
 end)
 
-vim.keymap.set("n", "<M-s>", function()
+vim.keymap.set("", "<C-s>", function()
 	builtin.lsp_dynamic_workspace_symbols()
 end)
 
@@ -93,3 +93,8 @@ vim.keymap.set(
 	[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
 	{ noremap = true, silent = true }
 )
+
+-- Emoji
+vim.keymap.set("n", "<leader>:", function()
+	builtin.symbols({ sources = { "emoji", "gitmoji" } })
+end)

@@ -15,6 +15,7 @@ return require("packer").startup(function(use)
 	})
 
 	use("smartpde/telescope-recent-files")
+	use("nvim-telescope/telescope-symbols.nvim")
 
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	use({ "tomasiser/vim-code-dark" })
@@ -68,16 +69,13 @@ return require("packer").startup(function(use)
 	use("nvim-tree/nvim-web-devicons")
 	use("preservim/nerdcommenter")
 	use("christoomey/vim-tmux-navigator")
-	use("mhinz/vim-startify")
-
-	use({
-		"ms-jpq/chadtree",
-		branch = "chad",
-		run = "python3 -m chadtree deps",
-	})
 
 	use("junegunn/limelight.vim")
-	-- use("idanarye/vim-merginal")
 	use("Yggdroot/indentLine")
 	use("b0o/schemastore.nvim")
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+	use({ "nvim-tree/nvim-tree.lua" })
+	use({ "goolord/alpha-nvim" })
+	use({ "moll/vim-bbye" })
 end)

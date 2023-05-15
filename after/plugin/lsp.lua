@@ -3,6 +3,7 @@ local lsp = require("lsp-zero").preset({
 	manage_nvim_cmp = { set_sources = "recommended" },
 })
 local schemastore = require("schemastore")
+local ts = require("typescript")
 
 lsp.ensure_installed({ "tsserver", "lua_ls" })
 lsp.set_sign_icons({ error = "✘", warn = "▲", hint = "⚑", info = "»" })
@@ -18,7 +19,7 @@ end)
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 -- TYPESCRIPT
-require("typescript").setup({
+ts.setup({
 	server = {
 		on_attach = function(client, bufnr)
 			-- You can find more commands in the documentation:
@@ -75,5 +76,7 @@ lspconfig.omnisharp.setup({
 vim.diagnostic.config({ virtual_text = false })
 
 vim.keymap.set("n", "<M-e>", vim.diagnostic.open_float)
-vim.keymap.set("n", "<M-Enter>", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<M-r>", vim.lsp.buf.rename)
+vim.keymap.set("n", "<M-w>", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<M-S-r>", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>oi", ts.actions.organizeImports)
+vim.keymap.set("n", "<leader>ru", ts.actions.removeUnused)
